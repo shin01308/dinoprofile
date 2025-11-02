@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DinoProfile — Login / Signup / Profile</title>
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Dino<span>Profile</span></div>
+    <nav class="nav">
+      <a href="#" data-view="home" class="nav-link active">Home</a>
+      <a href="#" data-view="auth" class="nav-link">Login / Signup</a>
+      <a href="#" data-view="profile" class="nav-link">Profile</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Home -->
+    <section id="view-home" class="view active-view">
+      <div class="hero">
+        <div class="hero-left">
+          <h1>Chào mừng đến với DinoProfile</h1>
+          <p>Demo mượt: đăng ký, đăng nhập, upload avatar lên server và reset mật khẩu qua email.</p>
+          <div class="actions">
+            <button class="btn" id="btn-go-auth">Bắt đầu</button>
+            <button class="btn ghost" id="btn-go-profile">Xem Profile</button>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a1f7cf3f7a2ad6a3c9a2d5e9b9c5d6a" alt="Dino image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Auth (Login / Signup) -->
+    <section id="view-auth" class="view">
+      <div class="auth-wrap">
+        <div class="auth-card">
+          <div class="switcher">
+            <button id="tab-login" class="tab active">Đăng nhập</button>
+            <button id="tab-register" class="tab">Đăng ký</button>
+          </div>
+
+          <!-- Login -->
+          <form id="form-login" class="form active-form" autocomplete="off">
+            <h2>Đăng nhập</h2>
+            <div class="input-group">
+              <label for="login-username">Username</label>
+              <input id="login-username" type="text" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="input-group">
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="row-between">
+              <a href="#" id="forgot-link">Quên mật khẩu?</a>
+              <button type="submit" class="btn">Đăng nhập</button>
+            </div>
+            <p class="muted">Hoặc đăng nhập bằng</p>
+            <div class="socials">
+              <button class="social" title="Google"><i class='bx bxl-google'></i></button>
+              <button class="social" title="Github"><i class='bx bxl-github' ></i></button>
+              <button class="social" title="Facebook"><i class='bx bxl-facebook' ></i></button>
+            </div>
+          </form>
+
+          <!-- Register -->
+          <form id="form-register" class="form" autocomplete="off" enctype="multipart/form-data">
+            <h2>Đăng ký</h2>
+            <div class="input-group">
+              <label for="reg-username">Username</label>
+              <input id="reg-username" name="username" type="text" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="input-group">
+              <label for="reg-email">Email</label>
+              <input id="reg-email" name="email" type="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+              <label for="reg-password">Password</label>
+              <input id="reg-password" name="password" type="password" placeholder="Mật khẩu" required>
+            </div>
+            <div class="input-group">
+              <label for="reg-password2">Confirm Password</label>
+              <input id="reg-password2" type="password" placeholder="Nhập lại mật khẩu" required>
+            </div>
+
+            <div class="input-group">
+              <label for="reg-avatar">Avatar (tùy chọn)</label>
+              <input id="reg-avatar" name="avatar" type="file" accept="image/*">
+              <small class="muted">Kích thước tối đa 2MB. Ảnh sẽ upload lên server.</small>
+            </div>
+
+            <button type="submit" class="btn">Đăng ký</button>
+            <p class="muted">Hoặc đăng ký bằng</p>
+            <div class="socials">
+              <button class="social" title="Google"><i class='bx bxl-google'></i></button>
+              <button class="social" title="Github"><i class='bx bxl-github' ></i></button>
+              <button class="social" title="Facebook"><i class='bx bxl-facebook' ></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section id="view-profile" class="view">
+      <div class="profile-card">
+        <div class="profile-head">
+          <div class="avatar" id="avatar">D</div>
+          <div class="meta">
+            <h2 id="profile-username">—</h2>
+            <p id="profile-email">—</p>
+          </div>
+        </div>
+
+        <div class="profile-body">
+          <h3>Giới thiệu</h3>
+          <p id="profile-bio">Chưa có mô tả.</p>
+
+          <div class="profile-actions">
+            <button class="btn" id="edit-btn">Chỉnh sửa</button>
+            <button class="btn ghost" id="logout-btn">Đăng xuất</button>
+          </div>
+
+          <div id="edit-area" class="edit-area hidden">
+            <div class="input-group">
+              <label>Tên hiển thị</label>
+              <input id="edit-name" type="text">
+            </div>
+            <div class="input-group">
+              <label>Email</label>
+              <input id="edit-email" type="email">
+            </div>
+            <div class="input-group">
+              <label>Giới thiệu ngắn</label>
+              <input id="edit-bio" type="text">
+            </div>
+            <div class="input-group">
+              <label>Avatar mới (tùy chọn)</label>
+              <input id="edit-avatar" name="avatar" type="file" accept="image/*">
+            </div>
+            <div class="row-between">
+              <button class="btn" id="save-profile">Lưu</button>
+              <button class="btn ghost" id="cancel-edit">Hủy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>2025 Đưọc tạo bởi Phat Dat</div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
